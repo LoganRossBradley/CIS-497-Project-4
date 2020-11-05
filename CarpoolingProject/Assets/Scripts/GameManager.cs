@@ -42,12 +42,12 @@ public class GameManager : MonoBehaviour
     
     private void Update()
     {
-        //pauses and resumes on esc press. Cannot pause on main menu screen
-        if (Input.GetKeyDown(KeyCode.Escape) && !isPaused && !CurrentLevelName.Equals("MainMenu"))
+        //pauses and resumes on P press. Cannot pause on main menu screen
+        if (Input.GetKeyDown(KeyCode.P) && !isPaused && !CurrentLevelName.Equals("MainMenu"))
         {
             Pause();
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && isPaused && !CurrentLevelName.Equals("MainMenu"))
+        else if (Input.GetKeyDown(KeyCode.P) && isPaused && !CurrentLevelName.Equals("MainMenu"))
         {
             UnPause();
         }
@@ -83,6 +83,16 @@ public class GameManager : MonoBehaviour
             Debug.LogError("[GameManager] Unable to unload: " + CurrentLevelName);
         }
         CurrentLevelName = "MainMenu";
+    }
+
+    public void ReloadCurrentLevel()
+    {
+        AsyncOperation ao = SceneManager.UnloadSceneAsync(CurrentLevelName);
+        if (ao == null)
+        {
+            Debug.LogError("[GameManager] Unable to unload: " + CurrentLevelName);
+        }
+        LoadLevel(CurrentLevelName);
     }
 
     //pausing and unpausing

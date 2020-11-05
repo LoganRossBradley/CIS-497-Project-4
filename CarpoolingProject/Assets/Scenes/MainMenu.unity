@@ -1389,7 +1389,7 @@ GameObject:
   - component: {fileID: 739962357}
   - component: {fileID: 739962356}
   m_Layer: 5
-  m_Name: Resume
+  m_Name: Restart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1461,6 +1461,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1152726421}
         m_TargetAssemblyTypeName: 
         m_MethodName: UnPause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1152726421}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ReloadCurrentLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1863,9 +1875,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3905f0f813f44d4696f773e91f632ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
   pauseMenu: {fileID: 1667026793}
   isPaused: 0
+  gameOverWin: 0
+  gameOverLose: 0
 --- !u!4 &1152726422
 Transform:
   m_ObjectHideFlags: 0
@@ -2836,7 +2849,7 @@ GameObject:
   - component: {fileID: 1917914309}
   - component: {fileID: 1917914308}
   m_Layer: 5
-  m_Name: Resume
+  m_Name: Restart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2908,6 +2921,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1152726421}
         m_TargetAssemblyTypeName: 
         m_MethodName: UnPause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1152726421}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ReloadCurrentLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
