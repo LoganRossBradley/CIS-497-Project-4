@@ -10,9 +10,16 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public int score;
+    //to keep track of score count and fuel usage
+    public static int score = 0;
+    public static float usedFuel = 0;
+
     public GameObject pauseMenu;
     public bool isPaused = false;
+
+    //endgame conditions
+    public bool gameOverWin = false;
+    public bool gameOverLose = false;
 
     private string CurrentLevelName = "MainMenu";
 
@@ -92,4 +99,13 @@ public class GameManager : MonoBehaviour
         isPaused = false;
     }
 
+    //win conditions
+    public static void outOfFuel()
+    {
+        Debug.Log("ran out of fuel");
+    }
+    public static void reachedEndGoal()
+    {
+        Debug.Log("you win");
+    }
 }
