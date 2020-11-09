@@ -10,9 +10,16 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public int score;
+    //to keep track of score count and fuel usage
+    public static int score = 0;
+    public static float usedFuel = 0;
+
     public GameObject pauseMenu;
     public bool isPaused = false;
+
+    //endgame conditions
+    public bool gameOverWin = false;
+    public bool gameOverLose = false;
 
     private string CurrentLevelName = "MainMenu";
 
@@ -35,12 +42,12 @@ public class GameManager : MonoBehaviour
     
     private void Update()
     {
-        //pauses and resumes on esc press. Cannot pause on main menu screen
-        if (Input.GetKeyDown(KeyCode.Escape) && !isPaused && !CurrentLevelName.Equals("MainMenu"))
+        //pauses and resumes on P press. Cannot pause on main menu screen
+        if (Input.GetKeyDown(KeyCode.P) && !isPaused && !CurrentLevelName.Equals("MainMenu"))
         {
             Pause();
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && isPaused && !CurrentLevelName.Equals("MainMenu"))
+        else if (Input.GetKeyDown(KeyCode.P) && isPaused && !CurrentLevelName.Equals("MainMenu"))
         {
             UnPause();
         }
@@ -78,6 +85,16 @@ public class GameManager : MonoBehaviour
         CurrentLevelName = "MainMenu";
     }
 
+    public void ReloadCurrentLevel()
+    {
+        AsyncOperation ao = SceneManager.UnloadSceneAsync(CurrentLevelName);
+        if (ao == null)
+        {
+            Debug.LogError("[GameManager] Unable to unload: " + CurrentLevelName);
+        }
+        LoadLevel(CurrentLevelName);
+    }
+
     //pausing and unpausing
     public void Pause()
     {
@@ -92,4 +109,13 @@ public class GameManager : MonoBehaviour
         isPaused = false;
     }
 
+    //win conditions
+    public static void outOfFuel()
+    {
+        Debug.Log("ran out of fuel");
+    }
+    public static void reachedEndGoal()
+    {
+        Debug.Log("you win");
+    }
 }
