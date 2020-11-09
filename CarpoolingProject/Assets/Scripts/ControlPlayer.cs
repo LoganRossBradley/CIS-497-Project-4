@@ -1,13 +1,14 @@
-﻿using System.Collections;
+﻿    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ControlPlayer : MonoBehaviour
 {
-    private float speed = 10;
-    private float turnSpeed = 30;
+    public float speed = 10;
+    private float turnSpeed = 50;
     private float horizontalInput;
     private float forwardInput;
+    private FuelBar gasCheck;
 
     // Start is called before the first frame update
     void Start()
@@ -18,8 +19,10 @@ public class ControlPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        speed= FuelBar.isFuelEmpty(speed);
         horizontalInput = Input.GetAxis("Horizontal");
         forwardInput = Input.GetAxis("Vertical");
+        
 
         transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
         //can only turn if moving forward or backward
