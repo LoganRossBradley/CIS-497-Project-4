@@ -24,16 +24,18 @@ public class FuelBar : MonoBehaviour
             fuelEmpty = true;
         }
     }
-    public static float isFuelEmpty(float speed)
+    public static bool isFuelEmpty()
     {
-        if (fuelEmpty == true)
-        {
-            return 0;
-        }
-        else
-        {
-            return speed;
-        }
+        //caused issues with game restart, so changed
+        //if (fuelEmpty == true)
+        //{
+        //    return 0;
+        //}
+        //else
+        //{
+        //    return speed;
+        //}
+        return fuelEmpty;
     }
     //not sure what to doe with this
     public void SetHealth(int health)

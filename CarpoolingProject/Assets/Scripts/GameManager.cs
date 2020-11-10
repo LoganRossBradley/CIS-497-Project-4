@@ -18,8 +18,8 @@ public class GameManager : MonoBehaviour
     public bool isPaused = false;
 
     //endgame conditions
-    public bool gameOverWin = false;
-    public bool gameOverLose = false;
+    public GameObject winScreen;
+    public GameObject loseScreen;
 
     private string CurrentLevelName = "MainMenu";
 
@@ -89,12 +89,15 @@ public class GameManager : MonoBehaviour
 
     public void ReloadCurrentLevel()
     {
+        usedFuel = 0f;
         AsyncOperation ao = SceneManager.UnloadSceneAsync(CurrentLevelName);
         if (ao == null)
         {
             Debug.LogError("[GameManager] Unable to unload: " + CurrentLevelName);
         }
+
         LoadLevel(CurrentLevelName);
+        UnPause();
     }
 
     //pausing and unpausing
@@ -114,10 +117,16 @@ public class GameManager : MonoBehaviour
     //win conditions
     public static void outOfFuel()
     {
-        Debug.Log("ran out of fuel");
+        Debug.Log("Lose");
+        GameManager.instance.isPaused = true;
+        Time.timeScale = 0f;
+        GameManager.instance.loseScreen.SetActive(true);
     }
     public static void reachedEndGoal()
     {
         Debug.Log("you win");
+        GameManager.instance.isPaused = true;
+        Time.timeScale = 0f;
+        GameManager.instance.winScreen.SetActive(true);
     }
 }

@@ -1928,6 +1928,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 12
+  fuelEfficiency: 1.2
 --- !u!65 &380391553
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2642,7 +2643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4870167790249810, guid: 0ae65270c30153049ab49eb3ebf070d6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0.71
       objectReference: {fileID: 0}
     - target: {fileID: 4870167790249810, guid: 0ae65270c30153049ab49eb3ebf070d6, type: 3}
       propertyPath: m_LocalPosition.z

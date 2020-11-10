@@ -1160,7 +1160,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 161.68262, y: -50.13893}
+  m_AnchoredPosition: {x: 161.68262, y: -50.018845}
   m_SizeDelta: {x: 207.75238, y: 50.610626}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &579395995
@@ -1459,8 +1459,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1152726421}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: UnPause
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ReloadCurrentLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1470,10 +1470,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1152726421}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ReloadCurrentLevel
-        m_Mode: 1
+      - m_Target: {fileID: 1705728805}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1714,7 +1714,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 161.68262, y: -195.44424}
+  m_AnchoredPosition: {x: 161.68262, y: -195.32416}
   m_SizeDelta: {x: 280, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1123224392
@@ -1877,8 +1877,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1667026793}
   isPaused: 0
-  gameOverWin: 0
-  gameOverLose: 0
+  winScreen: {fileID: 1686565303}
+  loseScreen: {fileID: 1705728805}
 --- !u!4 &1152726422
 Transform:
   m_ObjectHideFlags: 0
@@ -2872,7 +2872,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 161.68262, y: -115.444244}
+  m_AnchoredPosition: {x: 161.68262, y: -115.32416}
   m_SizeDelta: {x: 280, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1917914308
@@ -2919,8 +2919,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1152726421}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: UnPause
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ReloadCurrentLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2930,10 +2930,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1152726421}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ReloadCurrentLevel
-        m_Mode: 1
+      - m_Target: {fileID: 1686565303}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
