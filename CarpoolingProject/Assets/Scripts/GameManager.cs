@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
 
+    private GameObject[] friendList;
+
     private void Awake()
     {
         if(instance == null)

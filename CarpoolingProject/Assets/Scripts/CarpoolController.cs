@@ -9,8 +9,11 @@ public class CarpoolController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            //reset distance for compass, needed otherwise doesn't change target when picking up a friend
+            collision.gameObject.GetComponentInChildren<Compass>().distance = 99999f;
+
             GameManager.score += 1;
+            Destroy(gameObject);
         }
     }
 }

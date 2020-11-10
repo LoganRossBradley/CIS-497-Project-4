@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 1982939003893578524}
   m_Layer: 0
   m_Name: Santa
-  m_TagString: Untagged
+  m_TagString: FriendGoal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -208,10 +208,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.6568225
-  m_Height: 2.0614934
+  m_Radius: 2.662817
+  m_Height: 5.325634
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0.049215317}
 --- !u!114 &1982939003893578524
 MonoBehaviour:
   m_ObjectHideFlags: 0
