@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class CarpoolController : MonoBehaviour
 {
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             //reset distance for compass, needed otherwise doesn't change target when picking up a friend
-            collision.gameObject.GetComponentInChildren<Compass>().distance = 99999f;
+            other.gameObject.GetComponentInChildren<Compass>().distance = 99999f;
 
             GameManager.score += 1;
+            Debug.Log("Destroy nurse");
             Destroy(gameObject);
         }
     }
