@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public GameObject winScreen;
     public GameObject loseScreen;
 
-    private string CurrentLevelName = "MainMenu";
+    public static string CurrentLevelName = "MainMenu";
 
     public static GameManager instance;
 

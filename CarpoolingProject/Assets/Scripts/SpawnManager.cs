@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //set scene this object is in to active scene so objects properly spawn in it instead of main menu scene
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(GameManager.CurrentLevelName));
+
         spawnCharacter(5);
     }
 
