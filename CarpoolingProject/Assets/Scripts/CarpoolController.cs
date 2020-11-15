@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class CarpoolController : MonoBehaviour
 {
-    private SubtitleUI SubtitleUI;
-    private void start()
+    [SerializeField] private SubtitleUI SubtitleUI;
+    private void Start()
     {
         SubtitleUI = GameObject.FindGameObjectWithTag("SubTitle").GetComponent<SubtitleUI>();
+        
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -18,7 +19,6 @@ public class CarpoolController : MonoBehaviour
             other.gameObject.GetComponentInChildren<Compass>().distance = 99999f;
 
             GameManager.score += 1;
-            Debug.Log("Destroy nurse");
             SubtitleUI.startIEnumerator();
             Destroy(gameObject);
             
