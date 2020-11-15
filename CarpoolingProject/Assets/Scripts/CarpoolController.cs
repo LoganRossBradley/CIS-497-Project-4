@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class CarpoolController : MonoBehaviour
 {
+    private SubtitleUI SubtitleUI;
+    private void start()
+    {
+        SubtitleUI = GameObject.FindGameObjectWithTag("SubTitle").GetComponent<SubtitleUI>();
+    }
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.gameObject.CompareTag("Player"))
         {
             //reset distance for compass, needed otherwise doesn't change target when picking up a friend
@@ -13,7 +19,10 @@ public class CarpoolController : MonoBehaviour
 
             GameManager.score += 1;
             Debug.Log("Destroy nurse");
+            SubtitleUI.startIEnumerator();
             Destroy(gameObject);
+            
         }
     }
+    
 }
