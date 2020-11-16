@@ -7,7 +7,7 @@ public class ControlPlayer : MonoBehaviour
     public float speed = 10;
     public float fuelEfficiency = 1f;
 
-    private float turnSpeed = 50;
+    public float turnSpeed = 50;
     private float horizontalInput;
     private float forwardInput;
     private FuelBar gasCheck;
