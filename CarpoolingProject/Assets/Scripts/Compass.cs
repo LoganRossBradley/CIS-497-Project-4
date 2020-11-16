@@ -18,7 +18,7 @@ public class Compass : MonoBehaviour
 
     public float viewDistance;
     
-    [SerializeField] private GameObject[] friendList;
+    private GameObject[] friendList;
 
     // Start is called before the first frame update
     void Start()

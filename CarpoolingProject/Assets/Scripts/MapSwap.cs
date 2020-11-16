@@ -40,5 +40,7 @@ public class MapSwap : MonoBehaviour
             Time.timeScale = 1f;
         }
 
+        if (!minimapUsed)
+            Time.timeScale = 0f;
     }
 }

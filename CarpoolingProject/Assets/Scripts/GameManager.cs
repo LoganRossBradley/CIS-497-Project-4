@@ -53,6 +53,9 @@ public class GameManager : MonoBehaviour
         {
             UnPause();
         }
+
+        if (isPaused)
+            Time.timeScale = 0f;
     }
 
     //load and unload levels
