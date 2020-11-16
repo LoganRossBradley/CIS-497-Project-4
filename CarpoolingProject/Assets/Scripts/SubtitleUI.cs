@@ -29,10 +29,9 @@ public class SubtitleUI : MonoBehaviour
     }
     IEnumerator DisplaySubtitle()
     {
-        subtitleText.SetActive(true);
         subtitleText.GetComponent<Text>().text = PickupSpeech();
         yield return new WaitForSeconds(4f);
-        subtitleText.SetActive(false);
+        subtitleText.GetComponent<Text>().text = "";
     }
     public void startIEnumerator()
     {

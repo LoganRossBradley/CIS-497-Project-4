@@ -2102,7 +2102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  fuelEfficiency: 2
+  fuelEfficiency: 2.66
 --- !u!65 &380391553
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -12935,6 +12935,11 @@ PrefabInstance:
       propertyPath: speed
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 6992784576119046293, guid: f41b254878d63dd48b06e5bab9c9af61,
+        type: 3}
+      propertyPath: fuelEfficiency
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6992784576319568424, guid: f41b254878d63dd48b06e5bab9c9af61,
         type: 3}
       propertyPath: finalGoal
