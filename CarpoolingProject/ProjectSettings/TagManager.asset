@@ -6,6 +6,14 @@ TagManager:
   tags:
   - FriendGoal
   - SubTitle
+  - fdw
+  - fpw
+  - rdw
+  - rpw
+  - fdc
+  - rdc
+  - fpc
+  - rpc
   layers:
   - Default
   - TransparentFX
