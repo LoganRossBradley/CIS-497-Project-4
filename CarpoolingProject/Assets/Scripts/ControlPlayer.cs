@@ -11,10 +11,12 @@ public class ControlPlayer : MonoBehaviour
     public float forwardInput;
     private bool gameOver = false;
 
+    // wheel collider allows car to drive using it's wheels
     public WheelCollider frontDriverW = new WheelCollider(), frontPassW = new WheelCollider();
     public WheelCollider rearDriverW = new WheelCollider(), rearPassW = new WheelCollider();
     public Transform frontDriverT, frontPassT;
     public Transform rearDriverT, rearPassT;
+    //steering angle and force it can exert on the car
     public float maxSteerAngle = 30;
     public float motorForce = 700;
     public float brake = 500000;
@@ -30,14 +32,18 @@ public class ControlPlayer : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
         forwardInput = Input.GetAxis("Vertical");
+
+        // when break is called causes the car to lose momentum 
         brakeInput = Input.GetKey("space");
         if (forwardInput == 1 || forwardInput == -1)
         {
+            // drains fuel gauge as you hold down your movement button
             GameManager.usedFuel += Time.deltaTime * fuelEfficiency;
         }
 
     }
 
+    // allows you to turn. Cannot turn while you are not moving, but you can hold down the button to turn the wheel
     private void Steer()
     {
         steerAngle = maxSteerAngle * horizontalInput;
@@ -55,6 +61,7 @@ public class ControlPlayer : MonoBehaviour
         }
     }
 
+    //makes the car go faster every second
     private void Accelerate()
     {
 
@@ -65,9 +72,7 @@ public class ControlPlayer : MonoBehaviour
 
         }
         else
-        {
-            Debug.Log(frontDriverW.motorTorque);
- 
+        { 
             frontDriverW.motorTorque = forwardInput * motorForce;
             frontPassW.motorTorque = forwardInput * motorForce;
             frontDriverW.brakeTorque = 0;
@@ -77,6 +82,7 @@ public class ControlPlayer : MonoBehaviour
 
     private void UpdateWheelPoses()
     {
+        //makes the wheel actually turn
         UpdateWheelPose(frontDriverW, frontDriverT);
         UpdateWheelPose(rearDriverW, rearDriverT);
         UpdateWheelPose(frontPassW, frontPassT);
@@ -86,6 +92,8 @@ public class ControlPlayer : MonoBehaviour
 
     private void UpdateWheelPose(WheelCollider collider, Transform transform)
     {
+        //makes the wheel actually turn
+
         Vector3 pos = transform.position;
         Quaternion quat = transform.rotation;
 
@@ -97,6 +105,7 @@ public class ControlPlayer : MonoBehaviour
 
     void FixedUpdate()
     {
+        //all runs in fixed for the physics engine to work properly
         GetInput();
         Steer();
         Accelerate();
