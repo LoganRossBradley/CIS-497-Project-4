@@ -14,8 +14,8 @@ public class ControlPlayer : MonoBehaviour
     // wheel collider allows car to drive using it's wheels
     public WheelCollider frontDriverW = new WheelCollider(), frontPassW = new WheelCollider();
     public WheelCollider rearDriverW = new WheelCollider(), rearPassW = new WheelCollider();
-    public Transform frontDriverT, frontPassT;
-    public Transform rearDriverT, rearPassT;
+    private Transform frontDriverT, frontPassT;
+    private Transform rearDriverT, rearPassT;
     //steering angle and force it can exert on the car
     public float maxSteerAngle = 30;
     public float motorForce = 700;
@@ -26,6 +26,12 @@ public class ControlPlayer : MonoBehaviour
     {
         gameOver = false;
         GameManager.usedFuel = 0;
+
+        frontDriverT = frontDriverW.GetComponent<Transform>();
+        frontPassT = frontPassW.GetComponent<Transform>();
+        rearDriverT = rearDriverW.GetComponent<Transform>();
+        rearPassT = rearPassW.GetComponent<Transform>();
+
     }
 
     public void GetInput()

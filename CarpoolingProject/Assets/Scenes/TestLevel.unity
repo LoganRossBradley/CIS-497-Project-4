@@ -12826,6 +12826,16 @@ PrefabInstance:
       propertyPath: finalGoal
       value: 
       objectReference: {fileID: 3697605108104763602}
+    - target: {fileID: 6182536700266540368, guid: f41b254878d63dd48b06e5bab9c9af61,
+        type: 3}
+      propertyPath: m_SuspensionSpring.spring
+      value: 9000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6182536700266540368, guid: f41b254878d63dd48b06e5bab9c9af61,
+        type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6992784576119046293, guid: f41b254878d63dd48b06e5bab9c9af61,
         type: 3}
       propertyPath: speed
@@ -12869,7 +12879,7 @@ PrefabInstance:
     - target: {fileID: 6996924632159156072, guid: f41b254878d63dd48b06e5bab9c9af61,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.44
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6996924632159156072, guid: f41b254878d63dd48b06e5bab9c9af61,
         type: 3}
@@ -12925,6 +12935,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AngularDrag
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7046929754152158314, guid: f41b254878d63dd48b06e5bab9c9af61,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 84
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f41b254878d63dd48b06e5bab9c9af61, type: 3}
