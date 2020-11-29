@@ -54,9 +54,16 @@ public class Compass : MonoBehaviour
             goal = finalGoal.transform.position;
         }
 
+        Vector3 temp;
+
         //Rotate compass to point towards the goal
         if(goal != null)
-            transform.LookAt(goal);
+        {
+            //prevents compass from pointing upwards
+            temp = new Vector3(goal.y, transform.position.y, goal.z);
+            transform.LookAt(temp);
+        }
+            
 
         //Have the arrow disappear if the player is close enough to goal, reappear if strays too far from goal
         distance = Vector3.Distance(transform.position, goal);

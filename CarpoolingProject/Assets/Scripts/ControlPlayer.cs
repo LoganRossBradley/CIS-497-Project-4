@@ -5,19 +5,23 @@ using UnityEngine;
 public class ControlPlayer : MonoBehaviour
 {
     public float fuelEfficiency = 1f;
-    public float horizontalInput;
-    public bool brakeInput;
-    public float steerAngle;
-    public float forwardInput;
+
+    [SerializeField] private float verticalInput;
+    [SerializeField] private float horizontalInput;
+    [SerializeField] private float steeringAngle;
+    [SerializeField] private bool brakeInput = false;
+    [SerializeField] private float currentSpeed;
+
     private bool gameOver = false;
 
     // wheel collider allows car to drive using it's wheels
     public WheelCollider frontDriverW = new WheelCollider(), frontPassW = new WheelCollider();
     public WheelCollider rearDriverW = new WheelCollider(), rearPassW = new WheelCollider();
-    private Transform frontDriverT, frontPassT;
-    private Transform rearDriverT, rearPassT;
+    public Transform frontDriverT, frontPassT;
+    public Transform rearDriverT, rearPassT;
     //steering angle and force it can exert on the car
     public float maxSteerAngle = 30;
+    public float maxMotorForce = 1000;
     public float motorForce = 700;
     public float brake = 500000;
 
@@ -26,22 +30,17 @@ public class ControlPlayer : MonoBehaviour
     {
         gameOver = false;
         GameManager.usedFuel = 0;
-
-        frontDriverT = frontDriverW.GetComponent<Transform>();
-        frontPassT = frontPassW.GetComponent<Transform>();
-        rearDriverT = rearDriverW.GetComponent<Transform>();
-        rearPassT = rearPassW.GetComponent<Transform>();
-
     }
 
     public void GetInput()
     {
         horizontalInput = Input.GetAxis("Horizontal");
-        forwardInput = Input.GetAxis("Vertical");
+        verticalInput = Input.GetAxis("Vertical");
 
         // when break is called causes the car to lose momentum 
+        
         brakeInput = Input.GetKey("space");
-        if (forwardInput == 1 || forwardInput == -1)
+        if (verticalInput == 1 || verticalInput == -1)
         {
             // drains fuel gauge as you hold down your movement button
             GameManager.usedFuel += Time.deltaTime * fuelEfficiency;
@@ -52,19 +51,19 @@ public class ControlPlayer : MonoBehaviour
     // allows you to turn. Cannot turn while you are not moving, but you can hold down the button to turn the wheel
     private void Steer()
     {
-        steerAngle = maxSteerAngle * horizontalInput;
+        steeringAngle = maxSteerAngle * horizontalInput;
 
-        if (!brakeInput)
+        if (currentSpeed < 10 && currentSpeed > -10)
         {
-            frontDriverW.steerAngle = steerAngle;
-            frontPassW.steerAngle = steerAngle;
-
+            frontDriverW.steerAngle = -steeringAngle;
+            frontPassW.steerAngle = -steeringAngle;
         }
         else
         {
-            frontDriverW.steerAngle = -steerAngle;
-            frontPassW.steerAngle = -steerAngle;
+            frontDriverW.steerAngle = steeringAngle;
+            frontPassW.steerAngle = steeringAngle;
         }
+
     }
 
     //makes the car go faster every second
@@ -75,39 +74,52 @@ public class ControlPlayer : MonoBehaviour
         {
             frontDriverW.brakeTorque = brake;
             frontPassW.brakeTorque = brake;
+            rearDriverW.brakeTorque = brake;
+            rearPassW.brakeTorque = brake;
 
+
+        }
+        else if(frontDriverW.rpm >= maxMotorForce)
+        {
+            frontDriverW.motorTorque = 0;
+            frontPassW.motorTorque = 0;
         }
         else
-        { 
-            frontDriverW.motorTorque = forwardInput * motorForce;
-            frontPassW.motorTorque = forwardInput * motorForce;
+        {
+            frontDriverW.motorTorque = verticalInput * motorForce;
+            frontPassW.motorTorque = verticalInput * motorForce;
             frontDriverW.brakeTorque = 0;
             frontPassW.brakeTorque = 0;
+            
+            //uncomment for easier, though less realistic, breaking
+            //rearDriverW.brakeTorque = 0;
+            //rearPassW.brakeTorque = 0;
         }
     }
 
-    private void UpdateWheelPoses()
-    {
-        //makes the wheel actually turn
-        UpdateWheelPose(frontDriverW, frontDriverT);
-        UpdateWheelPose(rearDriverW, rearDriverT);
-        UpdateWheelPose(frontPassW, frontPassT);
-        UpdateWheelPose(rearPassW, rearPassT);
+    //Besides that our camera cant see the wheels turning so its unnessesary, its what caused the car controller to spaz out so badly
+    //private void UpdateWheelPoses()
+    //{
+    //    //makes the wheel actually turn
+    //    UpdateWheelPose(frontDriverW, frontDriverT);
+    //    UpdateWheelPose(rearDriverW, rearDriverT);
+    //    UpdateWheelPose(frontPassW, frontPassT);
+    //    UpdateWheelPose(rearPassW, rearPassT);
 
-    }
+    //}
 
-    private void UpdateWheelPose(WheelCollider collider, Transform transform)
-    {
-        //makes the wheel actually turn
+    //private void UpdateWheelPose(WheelCollider collider, Transform transform)
+    //{
+    //    //makes the wheel actually turn
 
-        Vector3 pos = transform.position;
-        Quaternion quat = transform.rotation;
+    //    Vector3 pos = transform.position;
+    //    Quaternion quat = transform.rotation;
 
-        collider.GetWorldPose(out pos, out quat);
+    //    collider.GetWorldPose(out pos, out quat);
 
-        transform.position = pos;
-        transform.rotation = quat;
-    }
+    //    transform.position = pos;
+    //    transform.rotation = quat;
+    //}
 
     void FixedUpdate()
     {
@@ -115,10 +127,8 @@ public class ControlPlayer : MonoBehaviour
         GetInput();
         Steer();
         Accelerate();
-        UpdateWheelPoses();
+        currentSpeed = frontDriverW.rpm;
         gameOver = FuelBar.isFuelEmpty();
-        if (frontDriverW.rpm > 500)
-            frontDriverW.motorTorque = 0;
     }
 
 }
