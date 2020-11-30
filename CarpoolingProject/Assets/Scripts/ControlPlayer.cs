@@ -95,6 +95,15 @@ public class ControlPlayer : MonoBehaviour
             //rearDriverW.brakeTorque = 0;
             //rearPassW.brakeTorque = 0;
         }
+        if (!brakeInput)
+        {
+            frontDriverW.brakeTorque = 0;
+            frontPassW.brakeTorque = 0;
+            rearDriverW.brakeTorque = 0;
+            rearPassW.brakeTorque = 0;
+
+
+        }
     }
 
     //Besides that our camera cant see the wheels turning so its unnessesary, its what caused the car controller to spaz out so badly
