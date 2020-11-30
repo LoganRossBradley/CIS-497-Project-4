@@ -74,8 +74,10 @@ public class ControlPlayer : MonoBehaviour
         {
             frontDriverW.brakeTorque = brake;
             frontPassW.brakeTorque = brake;
-            rearDriverW.brakeTorque = brake;
-            rearPassW.brakeTorque = brake;
+            
+            //uncomment for easier, though less realistic, breaking. Uncomment with the comment below
+            //rearDriverW.brakeTorque = brake;
+            //rearPassW.brakeTorque = brake;
 
 
         }
@@ -88,22 +90,24 @@ public class ControlPlayer : MonoBehaviour
         {
             frontDriverW.motorTorque = verticalInput * motorForce;
             frontPassW.motorTorque = verticalInput * motorForce;
+
+            //breaking
             frontDriverW.brakeTorque = 0;
             frontPassW.brakeTorque = 0;
             
-            //uncomment for easier, though less realistic, breaking
+            //uncomment for easier, though less realistic, breaking. Uncomment with the comment above
             //rearDriverW.brakeTorque = 0;
             //rearPassW.brakeTorque = 0;
         }
-        if (!brakeInput)
-        {
-            frontDriverW.brakeTorque = 0;
-            frontPassW.brakeTorque = 0;
-            rearDriverW.brakeTorque = 0;
-            rearPassW.brakeTorque = 0;
+        //if (!brakeInput)
+        //{
+        //    frontDriverW.brakeTorque = 0;
+        //    frontPassW.brakeTorque = 0;
+        //    rearDriverW.brakeTorque = 0;
+        //    rearPassW.brakeTorque = 0;
 
 
-        }
+        //}
     }
 
     //Besides that our camera cant see the wheels turning so its unnessesary, its what caused the car controller to spaz out so badly

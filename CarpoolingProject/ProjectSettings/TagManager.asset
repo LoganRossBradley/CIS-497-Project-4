@@ -15,6 +15,7 @@ TagManager:
   - fpc
   - rpc
   - Utility
+  - Icon
   layers:
   - Default
   - TransparentFX
