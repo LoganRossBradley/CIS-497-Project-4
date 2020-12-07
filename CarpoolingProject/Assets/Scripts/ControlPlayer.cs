@@ -6,11 +6,11 @@ public class ControlPlayer : MonoBehaviour
 {
     public float fuelEfficiency = 1f;
 
-    [SerializeField] private float verticalInput;
-    [SerializeField] private float horizontalInput;
-    [SerializeField] private float steeringAngle;
-    [SerializeField] private bool brakeInput = false;
-    [SerializeField] private float currentSpeed;
+    private float verticalInput;
+    private float horizontalInput;
+    private float steeringAngle;
+    private bool brakeInput = false;
+    private float currentSpeed;
 
     private bool gameOver = false;
 

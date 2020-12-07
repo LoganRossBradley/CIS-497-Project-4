@@ -60,7 +60,7 @@ public class Compass : MonoBehaviour
         if(goal != null)
         {
             //prevents compass from pointing upwards
-            temp = new Vector3(goal.y, transform.position.y, goal.z);
+            temp = new Vector3(goal.x, transform.position.y, goal.z);
             transform.LookAt(temp);
         }
             
