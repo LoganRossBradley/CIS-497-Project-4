@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 5442096061819465379}
   m_Layer: 0
   m_Name: Car
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -526,11 +526,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fuelEfficiency: 1
-  verticalInput: 0
-  horizontalInput: 0
-  steeringAngle: 0
-  brakeInput: 0
-  currentSpeed: 0
   frontDriverW: {fileID: 6465692237630288246}
   frontPassW: {fileID: 6465692237169399293}
   rearDriverW: {fileID: 6465692236220144887}
@@ -789,7 +784,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6465692236507534208}
   m_Layer: 0
-  m_Name: Player 1
+  m_Name: Player V2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
