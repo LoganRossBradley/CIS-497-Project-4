@@ -6,11 +6,13 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour
 {
     //to keep track of score count and fuel usage
+    public static int levelsCompleted = 0;
     public static int score = 0;
     public static float usedFuel = 0;
 
@@ -20,6 +22,7 @@ public class GameManager : MonoBehaviour
     //endgame conditions
     public GameObject winScreen;
     public GameObject loseScreen;
+    public GameObject endLevelStats;
 
     public static string CurrentLevelName = "MainMenu";
 
@@ -55,7 +58,12 @@ public class GameManager : MonoBehaviour
         }
 
         if (isPaused)
+        {
             Time.timeScale = 0f;
+        }
+
+        endLevelStats.GetComponent<Text>().text = "Stats:\nLevels Completed:" + levelsCompleted + "\nBy Carpooling, You saved on "
+            + score + " trips worth of gas!";
     }
 
     //load and unload levels
@@ -73,6 +81,9 @@ public class GameManager : MonoBehaviour
     public void UnLoadLevel(string levelName)
     {
         AsyncOperation ao = SceneManager.UnloadSceneAsync(levelName);
+        score = 0;
+        levelsCompleted = 0;
+        GameManager.instance.endLevelStats.SetActive(false);
         if (ao == null)
         {
             Debug.LogError("[GameManager] Unable to unload: " + levelName);
@@ -83,6 +94,9 @@ public class GameManager : MonoBehaviour
     public void UnloadCurrentLevel()
     {
         AsyncOperation ao = SceneManager.UnloadSceneAsync(CurrentLevelName);
+        score = 0;
+        levelsCompleted = 0;
+        GameManager.instance.endLevelStats.SetActive(false);
         if (ao == null)
         {
             Debug.LogError("[GameManager] Unable to unload: " + CurrentLevelName);
@@ -94,6 +108,7 @@ public class GameManager : MonoBehaviour
     {
         usedFuel = 0f;
         AsyncOperation ao = SceneManager.UnloadSceneAsync(CurrentLevelName);
+        GameManager.instance.endLevelStats.SetActive(false);
         if (ao == null)
         {
             Debug.LogError("[GameManager] Unable to unload: " + CurrentLevelName);
@@ -123,13 +138,16 @@ public class GameManager : MonoBehaviour
         Debug.Log("Lose");
         GameManager.instance.isPaused = true;
         Time.timeScale = 0f;
+        GameManager.instance.endLevelStats.SetActive(true);
         GameManager.instance.loseScreen.SetActive(true);
     }
     public static void reachedEndGoal()
     {
         Debug.Log("you win");
+        levelsCompleted++;
         GameManager.instance.isPaused = true;
         Time.timeScale = 0f;
+        GameManager.instance.endLevelStats.SetActive(true);
         GameManager.instance.winScreen.SetActive(true);
     }
 }
