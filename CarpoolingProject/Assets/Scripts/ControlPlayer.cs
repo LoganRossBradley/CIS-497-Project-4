@@ -10,7 +10,7 @@ public class ControlPlayer : MonoBehaviour
     private float horizontalInput;
     private float steeringAngle;
     private bool brakeInput = false;
-    private float currentSpeed;
+    [SerializeField] private float currentSpeed;
 
     private bool gameOver = false;
 
@@ -40,10 +40,14 @@ public class ControlPlayer : MonoBehaviour
         // when break is called causes the car to lose momentum 
         
         brakeInput = Input.GetKey("space");
-        if (verticalInput == 1 || verticalInput == -1)
+        //Drain fuel the faster you're moving
+        if (currentSpeed > 10)
         {
-            // drains fuel gauge as you hold down your movement button
-            GameManager.usedFuel += Time.deltaTime * fuelEfficiency;
+            GameManager.usedFuel += Time.deltaTime * fuelEfficiency * (currentSpeed/maxMotorForce) ;
+        }
+        else if (currentSpeed < -10)
+        {
+            GameManager.usedFuel += Time.deltaTime * fuelEfficiency * (currentSpeed / maxMotorForce) * -1;
         }
 
     }

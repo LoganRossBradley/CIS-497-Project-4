@@ -99,7 +99,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7747895880474739070
 Transform:
   m_ObjectHideFlags: 0
@@ -322,7 +322,7 @@ Transform:
   m_GameObject: {fileID: 4774479503686553018}
   m_LocalRotation: {x: -0.000000021855692, y: 0.00000011920926, z: -2.6645346e-15,
     w: 1}
-  m_LocalPosition: {x: -0.0133333085, y: 0.09000002, z: 0.033332832}
+  m_LocalPosition: {x: -0.0133333085, y: 5.24, z: 0.033332832}
   m_LocalScale: {x: 3.1031485, y: 0.011476373, z: 3.1031475}
   m_Children:
   - {fileID: 6336745238235914242}
@@ -526,6 +526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fuelEfficiency: 1
+  currentSpeed: 0
   frontDriverW: {fileID: 6465692237630288246}
   frontPassW: {fileID: 6465692237169399293}
   rearDriverW: {fileID: 6465692236220144887}

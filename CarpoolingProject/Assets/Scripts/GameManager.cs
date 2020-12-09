@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     //endgame conditions
     public GameObject winScreen;
     public GameObject loseScreen;
-    public GameObject endLevelStats;
+    public GameObject statsText;
 
     public static string CurrentLevelName = "MainMenu";
 
@@ -61,9 +61,6 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0f;
         }
-
-        endLevelStats.GetComponent<Text>().text = "Stats:\nLevels Completed:" + levelsCompleted + "\nBy Carpooling, You saved on "
-            + score + " trips worth of gas!";
     }
 
     //load and unload levels
@@ -78,12 +75,31 @@ public class GameManager : MonoBehaviour
         CurrentLevelName = levelName;
     }
 
+    public void loadRandomLevel()
+    {
+        //int nextLevel = Random.Range(0, 2);
+
+        UnloadCurrentLevel();
+
+        LoadLevel("Level 1");
+
+        //uncomment this and above random when level 2 is ready
+        //if (nextLevel == 0)
+        //{
+        //    LoadLevel("Level 1");
+        //}
+        //else if(nextLevel == 1)
+        //{
+        //    LoadLevel("Level 2");
+        //}
+        
+        UnPause();
+    }
+
     public void UnLoadLevel(string levelName)
     {
         AsyncOperation ao = SceneManager.UnloadSceneAsync(levelName);
-        score = 0;
-        levelsCompleted = 0;
-        GameManager.instance.endLevelStats.SetActive(false);
+        //GameManager.instance.endLevelStats.SetActive(false);
         if (ao == null)
         {
             Debug.LogError("[GameManager] Unable to unload: " + levelName);
@@ -94,9 +110,8 @@ public class GameManager : MonoBehaviour
     public void UnloadCurrentLevel()
     {
         AsyncOperation ao = SceneManager.UnloadSceneAsync(CurrentLevelName);
-        score = 0;
-        levelsCompleted = 0;
-        GameManager.instance.endLevelStats.SetActive(false);
+        
+        //GameManager.instance.endLevelStats.SetActive(false);
         if (ao == null)
         {
             Debug.LogError("[GameManager] Unable to unload: " + CurrentLevelName);
@@ -108,7 +123,7 @@ public class GameManager : MonoBehaviour
     {
         usedFuel = 0f;
         AsyncOperation ao = SceneManager.UnloadSceneAsync(CurrentLevelName);
-        GameManager.instance.endLevelStats.SetActive(false);
+        //GameManager.instance.endLevelStats.SetActive(false);
         if (ao == null)
         {
             Debug.LogError("[GameManager] Unable to unload: " + CurrentLevelName);
@@ -135,19 +150,21 @@ public class GameManager : MonoBehaviour
     //win conditions
     public static void outOfFuel()
     {
-        Debug.Log("Lose");
-        GameManager.instance.isPaused = true;
+        usedFuel = 0f;
         Time.timeScale = 0f;
-        GameManager.instance.endLevelStats.SetActive(true);
+        GameManager.instance.statsText.GetComponent<Text>().text = "Without carpooling, you and your friends would've used " + GameManager.score + " times more fuel across these " + GameManager.levelsCompleted + " levels! \nCarpool in real life to help save the enviorment, and your wallet!";
+        GameManager.instance.isPaused = true;
         GameManager.instance.loseScreen.SetActive(true);
+        score = 0;
+        levelsCompleted = 0;
     }
+
     public static void reachedEndGoal()
     {
-        Debug.Log("you win");
         levelsCompleted++;
         GameManager.instance.isPaused = true;
         Time.timeScale = 0f;
-        GameManager.instance.endLevelStats.SetActive(true);
+        //GameManager.instance.endLevelStats.SetActive(true);
         GameManager.instance.winScreen.SetActive(true);
     }
 }
