@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public GameObject winScreen;
     public GameObject loseScreen;
     public GameObject statsText;
+    public GameObject mainMenuMusic;
 
     public static string CurrentLevelName = "MainMenu";
 
@@ -84,10 +85,14 @@ public class GameManager : MonoBehaviour
         //uncomment this and above random when level 2 is ready
         if (nextLevel == 0)
         {
+            GameManager.instance.mainMenuMusic.SetActive(false);
+
             LoadLevel("Level 1");
         }
         else if (nextLevel == 1)
         {
+            GameManager.instance.mainMenuMusic.SetActive(false);
+
             LoadLevel("Level 2");
         }
 
