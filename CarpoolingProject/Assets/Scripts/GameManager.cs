@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
 
+    private GameObject[] friendList;
 
     private void Awake()
     {
@@ -60,7 +61,6 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0f;
         }
-
     }
 
     //load and unload levels

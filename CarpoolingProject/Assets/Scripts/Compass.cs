@@ -6,7 +6,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Compass : MonoBehaviour
 {
@@ -20,7 +19,6 @@ public class Compass : MonoBehaviour
     public float viewDistance;
     
     private GameObject[] friendList;
-    public GameObject remainingText;
 
     // Start is called before the first frame update
     void Start()
@@ -76,16 +74,6 @@ public class Compass : MonoBehaviour
         else
         {
             arrow.GetComponent<MeshRenderer>().enabled = false;
-        }
-
-        //update the text mentioning how many friends are remaining
-        if(friendList.Length >= 1)
-        {
-            remainingText.GetComponent<Text>().text = "Friends Remaining: " + friendList.Length;
-        }
-        else
-        {
-            remainingText.GetComponent<Text>().text = "All friends collected!";
         }
     }
 
