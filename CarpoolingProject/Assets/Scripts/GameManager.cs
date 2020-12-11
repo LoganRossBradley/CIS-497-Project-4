@@ -77,22 +77,20 @@ public class GameManager : MonoBehaviour
 
     public void loadRandomLevel()
     {
-        //int nextLevel = Random.Range(0, 2);
+        int nextLevel = Random.Range(0, 2);
 
         UnloadCurrentLevel();
 
-        LoadLevel("Level 1");
-
         //uncomment this and above random when level 2 is ready
-        //if (nextLevel == 0)
-        //{
-        //    LoadLevel("Level 1");
-        //}
-        //else if(nextLevel == 1)
-        //{
-        //    LoadLevel("Level 2");
-        //}
-        
+        if (nextLevel == 0)
+        {
+            LoadLevel("Level 1");
+        }
+        else if (nextLevel == 1)
+        {
+            LoadLevel("Level 2");
+        }
+
         UnPause();
     }
 

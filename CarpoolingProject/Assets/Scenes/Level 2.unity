@@ -13362,6 +13362,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 273133807461160778}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &273133807461160781 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4761597494270083799, guid: 92c281b835a770b4abd6f4a466553255,
+    type: 3}
+  m_PrefabInstance: {fileID: 273133807461160778}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &280419646855415993
 GameObject:
   m_ObjectHideFlags: 0
@@ -14758,6 +14764,7 @@ MonoBehaviour:
   arrow: {fileID: 6336745237261298478}
   distance: 99999
   viewDistance: 15
+  remainingText: {fileID: 273133807461160781}
 --- !u!1 &8123499305387016396
 GameObject:
   m_ObjectHideFlags: 0
